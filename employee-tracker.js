@@ -1,44 +1,46 @@
 const inq = require('inquirer')
 const mysql = require('mysql2/promise')
+require('dotenv').config()
 
 let dbconn = null
 
 async function doDBConn() {
-    let user, pass
-    await inq.prompt([{name: "dbuser", message: "Please enter your mysql username", default: "root"}]).then((obj)=>{
-        user = obj.dbuser
-    })
-    await inq.prompt([{name: "dbpass", message: "Please enter your mysql password",
-        // type: 'password'
-        default: 'SaitoHimea(*y)'
-    }]).then((obj)=>{
-        pass = obj.dbpass
-    })
+    // let user, pass
+    // await inq.prompt([{name: "dbuser", message: "Please enter your mysql username", default: "root"}]).then((obj)=>{
+    //     user = obj.dbuser
+    // })
+    // await inq.prompt([{name: "dbpass", message: "Please enter your mysql password",
+    //     // type: 'password'
+    //     default: 'leg12ir'
+    // }]).then((obj)=>{
+    //     pass = obj.dbpass
+    // })
     dbconn = await mysql.createConnection({
-        host: '127.0.0.1',
-        user: user,
-        password: pass,
+        host: process.env.MYSQL_HOST,
+        user: process.env.MYSQL_USER,
+        password: process.env.MYSQL_PASS,
         database: 'employee_db'
 })}
 
-
 async function askTask() {
-    async function viewDepartments() {
+    async function selectDepartments() {
         let departments = await dbconn.query(
             `SELECT name, id 
-            FROM employee_db.department`
+            FROM employee_db.department
+            ORDER BY id`
         )
-        console.log(departments[0])
+        
+        console.table(departments[0])
     }
-    async function viewRoles() {
+    async function selectRoles() {
         let roles = await dbconn.query(
             `SELECT title, role.id AS role_id, name AS department, salary
             FROM employee_db.department 
             INNER JOIN employee_db.role ON employee_db.role.department_id = employee_db.department.id;`
         )
-        console.log(roles[0])
+        console.table(roles[0])
     }
-    async function viewEmployees() {
+    async function selectEmployees() {
         let employees = await dbconn.query(
             `SELECT e.id AS employee_id, e.first_name, e.last_name, title, 
             name as department, salary, 
@@ -48,25 +50,69 @@ async function askTask() {
             INNER JOIN employee_db.employee e ON e.role_id = employee_db.role.id
             INNER JOIN employee_db.employee m ON e.manager_id = m.id;`
         )
-        console.log(employees[0])
+        console.table(employees[0])
+    }
+    async function insertDepartment(name) {
+        if (name.length > 0) {
+            let result = await dbconn.query(
+                `INSERT INTO employee_db.department (name) VALUES (?)`, name
+            )
+            if (result[0].warningStatus) {
+                throw result
+            } else {
+                console.log(`Successfully added '${name}' department.`)
+                // console.log(result)
+            }
+        }
+    }
+    async function insertRole(title, salary, department_id) {
+        let result = await dbconn.query(
+            `INSERT INTO employee_db.role (title, salary, department_id) VALUES (?, ?, ?)`, [title, salary, department_id]
+        )
+        if (result[0].warningStatus) {
+            throw result
+        } else {
+            console.log(`Successfully added '${title}' role.`)
+            // console.log(result)
+        }
     }
     async function addDepartment() {
-        await inq.prompt([{name: "dept", message: "Enter department name to add."}]).then((obj)=>{
-            // check to see if dept exists.
+        await inq.prompt([{name: "dept", message: "Enter department name to add.", validate: (title)=>{
+            return (typeof title === 'string' && title.length > 0)
+        }}]).then((obj)=>{
+            // check to see if a dept name exists.
             if (obj.dept.length > 0) {
-                `INSERT INTO employeedb.department (name) VALUES ("${obj.dept}")`
+                insertDepartment(obj.dept)
             } else {
                 addDepartment()
             }
         })
     }
-    async function addDepartment() {
-        await inq.prompt([{name: "dept", message: "Enter role name to add."}]).then((obj)=>{
-            if (obj.dept.length > 0) {
-                
-            } else {
-                addDepartment()
-            }
+    async function addRole() {
+        let title, salary, department_id
+        // we are getting the results of the whole departments table because we'll use it multiple times in multipel ways (caching)
+        let departments = await dbconn.query(
+            `SELECT name 
+            FROM employee_db.department
+            ORDER BY id`
+        )
+        console.log(departments)
+        await inq.prompt([
+            {name: "title", message: "Enter role title to add.", validate: (title)=>{
+                return (typeof title === 'string' && title.length > 0)
+            }},
+            {name: "salary", message: "Enter yearly salary", type: 'number', validate: (salary)=>{
+                return Number.isInteger(salary) || 'Please enter a valid whole number'
+            }},
+            {name: "department", message: "Which department?", type: 'list', choices: departments[0]}]).then((obj)=>{
+                console.log(obj.department)
+                dbconn.query(
+                    `SELECT id FROM employee_db.department WHERE name = ?`, obj.department
+                ).then(result=>{
+                    department_id = result[0][0].id
+                    insertRole(obj.title, obj.salary, department_id)
+                })
+                // console.log(obj)
         })
     }
     await inq.prompt([{name: "task", message: "What would you like to do?", type: "list", choices: [
@@ -79,19 +125,20 @@ async function askTask() {
     ]}]).then((obj)=>{
         switch (obj.task) {
             case "View All Departments":
-                viewDepartments()
+                selectDepartments()
                 // show a formatted table showing department names and department IDs
                 break;
             case "View All Roles":
-                viewRoles()
+                selectRoles()
                 break;
             case "View All Employees":
-                viewEmployees()
+                selectEmployees()
                 break;
             case "Add A Department":
                 addDepartment()
                 break;
             case "Add A Role":
+                addRole()
                 break;
             case "Add An Employee":
                 break;
@@ -105,9 +152,10 @@ async function askTask() {
 
 async function main() {
     await doDBConn()
-    departmentsSchema = await dbconn.query('DESCRIBE TABLE employee_db.department')
+    // departmentsSchema = await dbconn.query('DESCRIBE TABLE employee_db.department')
     // console.log(departmentsSchema)
     await askTask()
+    return 0
 }
 
 main()

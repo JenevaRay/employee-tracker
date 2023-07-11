@@ -1,96 +1,97 @@
-INSERT INTO employee_db.department (name) VALUES ("Investor");
-INSERT INTO employee_db.department (name) VALUES ("Executive");
-INSERT INTO employee_db.department (name) VALUES ("Product Development");
-INSERT INTO employee_db.department (name) VALUES ("Engineering/Technical");
-INSERT INTO employee_db.department (name) VALUES ("Sales and Marketing");
-INSERT INTO employee_db.department (name) VALUES ("Operations");
-INSERT INTO employee_db.department (name) VALUES ("Finance and Accounting");
-INSERT INTO employee_db.department (name) VALUES ("Human Resources");
-INSERT INTO employee_db.department (name) VALUES ("Legal");
-INSERT INTO employee_db.department (name) VALUES ("IT/Information Systems");
-INSERT INTO employee_db.department (name) VALUES ("Customer Success");
-INSERT INTO employee_db.department (name) VALUES ("Business Development");
-INSERT INTO employee_db.department (name) VALUES ("Research and Development");
-INSERT INTO employee_db.department (name) VALUES ("Data Analytics");
+INSERT INTO employee_db.department (name) VALUES ("Investor"), 
+ ("Executive"), 
+ ("Product Development"), 
+ ("Engineering/Technical"), 
+ ("Sales and Marketing"), 
+ ("Operations"), 
+ ("Finance and Accounting"), 
+ ("Human Resources"), 
+ ("Legal"), 
+ ("IT/Information Systems"), 
+ ("Customer Success"), 
+ ("Business Development"), 
+ ("Research and Development"), 
+ ("Data Analytics");
 
--- note: these are examples pulled from ChatGPT, they are not real examples, are lowball estimates since ChatGPT returned a range and I have to shoehorn that into an INT, and do not reflect the value a given person brings, commissions, or retention bonuses -- 
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("CEO (Chief Executive Officer)", 2, 150000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("COO (Chief Operating Officer)", 2, 120000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("CTO (Chief Technology Officer)", 2, 120000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("CFO (Chief Financial Officer)", 2, 100000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("CMO (Chief Marketing Officer)", 2, 90000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("CIO (Chief Information Officer)", 2, 100000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("CPO (Chief Product Officer)", 2, 100000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("CRO (Chief Revenue Officer)", 2, 100000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("CHRO (Chief Human Res. Off.)", 2, 90000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Product Manager", 3, 70000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("UX/UI Designer", 3, 60000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Software Engineer", 3, 70000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Front-end Developer", 3, 70000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Back-end Developer", 3, 70000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Quality Assurance (QA) Eng.", 3, 60000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Data Scientist", 3, 70000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Software Engineer", 4, 70000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Systems Engineer", 4, 70000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Data Engineer", 4, 70000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Machine Learning Engineer", 4, 80000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Hardware Engineer", 4, 70000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Network Engineer", 4, 70000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("DevOps Engineer", 4, 70000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Sales Representative", 5, 40000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Account Manager", 5, 50000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Marketing Manager", 5, 60000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Digital Marketer", 5, 50000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Content Writer", 5, 40000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("SEO Specialist", 5, 50000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Social Media Manager", 50000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Public Relations (PR) Spc.", 5, 50000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Operations Manager", 6, 60000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Logistics Coordinator", 6, 40000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Supply Chain Manager", 6, 60000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Inventory Manager", 6, 50000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Facilities Manager", 6, 50000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Customer Support Rep.", 6, 40000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Order Fulfillment Spc.", 6, 40000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Financial Analyst", 7, 50000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Accountant", 7, 50000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Controller", 7, 70000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Bookkeeper", 7, 40000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Financial Planner", 7, 60000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Tax Specialist", 7, 50000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("HR Manager", 8, 60000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Recruiter", 8, 40000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("HR Generalist", 8, 50000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Employee Relations Spc.", 8, 50000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Training/Development Spc", 8, 50000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Comp/Benefits Analyst", 8, 50000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("In-house Counsel", 9, 80000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Legal Advisor", 9, 60000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Intellectual Property Spc", 9, 70000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Compliance Officer", 9, 60000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("IT Manager", 10, 70000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Network Administrator", 10, 60000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Systems Administrator", 10, 60000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Database Administrator", 10, 70000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Cybersecurity Specialist", 10, 70000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("IT Support Specialist", 10, 40000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Customer Success Manager", 11, 60000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Support Specialist", 11, 40000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Implementation Specialist", 11, 50000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Customer Relationship Manager", 11, 50000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Business Development Manager", 12, 60000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Partnerships Manager", 12, 60000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Strategic Planner", 12, 60000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Sales Analyst", 12, 50000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Research Scientist", 13, 70000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("R&D Engineer", 13, 70000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Innovation Specialist", 13, 60000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Product Researcher", 13, 60000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Data Analyst", 14, 50000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Data Scientist", 14, 70000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Business Intel Analyst", 14, 60000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Data Engineer", 14, 70000);
-INSERT INTO employee_db.role (title, department_id, salary) VALUES ("Data Visualization Spc", 14, 60000);
+
+INSERT INTO employee_db.role (title, department_id, salary) VALUES 
+("CEO (Chief Executive Officer)", 2, 150000), 
+ ("COO (Chief Operating Offr)", 2, 120000), 
+ ("CTO (Chief Technology Offr)", 2, 120000), 
+ ("CFO (Chief Financial Offr)", 2, 100000), 
+ ("CMO (Chief Marketing Offr)", 2, 90000), 
+ ("CIO (Chief Information Offr)", 2, 100000), 
+ ("CPO (Chief Product Officer)", 2, 100000), 
+ ("CRO (Chief Revenue Officer)", 2, 100000), 
+ ("CHRO (Chief Human Res. Off.)", 2, 90000), 
+ ("Product Manager", 3, 70000), 
+ ("UX/UI Designer", 3, 60000), 
+ ("Software Engineer", 3, 70000), 
+ ("Front-end Developer", 3, 70000), 
+ ("Back-end Developer", 3, 70000), 
+ ("Quality Assurance (QA) Eng.", 3, 60000), 
+ ("Data Scientist", 3, 70000), 
+ ("Software Engineer", 4, 70000), 
+ ("Systems Engineer", 4, 70000), 
+ ("Data Engineer", 4, 70000), 
+ ("Machine Learning Engineer", 4, 80000), 
+ ("Hardware Engineer", 4, 70000), 
+ ("Network Engineer", 4, 70000), 
+ ("DevOps Engineer", 4, 70000), 
+ ("Sales Representative", 5, 40000), 
+ ("Account Manager", 5, 50000), 
+ ("Marketing Manager", 5, 60000), 
+ ("Digital Marketer", 5, 50000), 
+ ("Content Writer", 5, 40000), 
+ ("SEO Specialist", 5, 50000), 
+ ("Social Media Manager", 5, 50000), 
+ ("Public Relations (PR) Spc.", 5, 50000), 
+ ("Operations Manager", 6, 60000), 
+ ("Logistics Coordinator", 6, 40000), 
+ ("Supply Chain Manager", 6, 60000), 
+ ("Inventory Manager", 6, 50000), 
+ ("Facilities Manager", 6, 50000), 
+ ("Customer Support Rep.", 6, 40000), 
+ ("Order Fulfillment Spc.", 6, 40000), 
+ ("Financial Analyst", 7, 50000), 
+ ("Accountant", 7, 50000), 
+ ("Controller", 7, 70000), 
+ ("Bookkeeper", 7, 40000), 
+ ("Financial Planner", 7, 60000), 
+ ("Tax Specialist", 7, 50000), 
+ ("HR Manager", 8, 60000), 
+ ("Recruiter", 8, 40000), 
+ ("HR Generalist", 8, 50000), 
+ ("Employee Relations Spc.", 8, 50000), 
+ ("Training/Development Spc", 8, 50000), 
+ ("Comp/Benefits Analyst", 8, 50000), 
+ ("In-house Counsel", 9, 80000), 
+ ("Legal Advisor", 9, 60000), 
+ ("Intellectual Property Spc", 9, 70000), 
+ ("Compliance Officer", 9, 60000), 
+ ("IT Manager", 10, 70000), 
+ ("Network Administrator", 10, 60000), 
+ ("Systems Administrator", 10, 60000), 
+ ("Database Administrator", 10, 70000), 
+ ("Cybersecurity Specialist", 10, 70000), 
+ ("IT Support Specialist", 10, 40000), 
+ ("Customer Success Manager", 11, 60000), 
+ ("Support Specialist", 11, 40000), 
+ ("Implementation Specialist", 11, 50000), 
+ ("Customer Relationship Manager", 11, 50000), 
+ ("Business Development Manager", 12, 60000), 
+ ("Partnerships Manager", 12, 60000), 
+ ("Strategic Planner", 12, 60000), 
+ ("Sales Analyst", 12, 50000), 
+ ("Research Scientist", 13, 70000), 
+ ("R&D Engineer", 13, 70000), 
+ ("Innovation Specialist", 13, 60000), 
+ ("Product Researcher", 13, 60000), 
+ ("Data Analyst", 14, 50000), 
+ ("Data Scientist", 14, 70000), 
+ ("Business Intel Analyst", 14, 60000), 
+ ("Data Engineer", 14, 70000), 
+ ("Data Visualization Spc", 14, 60000);
 
 INSERT INTO employee_db.employee (first_name, last_name, role_id, manager_id) VALUES ("Jeneva", "Ray", 1, 1);
 INSERT INTO employee_db.employee (first_name, last_name, role_id, manager_id) VALUES ("Wendi", "Lin", 12, 1);

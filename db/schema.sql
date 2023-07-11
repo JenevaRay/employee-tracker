@@ -14,7 +14,7 @@ CREATE TABLE employee_db.role (
     title VARCHAR(30),
     salary DECIMAL NOT NULL,
     department_id INT NOT NULL,
-    FOREIGN KEY (department_id) REFERENCES department(id),
+    FOREIGN KEY (department_id) REFERENCES department(id) ON DELETE CASCADE,
     PRIMARY KEY (id)
 );
 -- one->many relationships between:  role.id -> role_id, id -> manager_id
@@ -24,6 +24,7 @@ CREATE TABLE employee_db.employee (
     last_name VARCHAR(30) NOT NULL,
     role_id INT NOT NULL,
     manager_id INT REFERENCES id,
-    FOREIGN KEY (role_id) REFERENCES role(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (role_id) REFERENCES role(id) 
+    ON DELETE CASCADE,
     PRIMARY KEY (id)
 );
