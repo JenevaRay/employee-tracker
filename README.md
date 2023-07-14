@@ -28,7 +28,7 @@ This is an employee management system that allows for organizational structuring
 ## Usage
 - node employee-tracker.js
 
-[![Video of software in use.](https://drive.google.com/file/d/1E8ZZG61G3SWgCJjiKte4rkqAzsEhktRL/view?usp=drive_link)](https://drive.google.com/file/d/1OohS0wm8kf5TVPjggHdjLDdHru7kaDLu/view?usp=drive_link)
+[![Video of software in use.](./assets/screenshot.png)](https://drive.google.com/file/d/1OohS0wm8kf5TVPjggHdjLDdHru7kaDLu/view?usp=drive_link)
 ## Credits
 - I learned how to use MySQL queries and joins from the edX staff.  Thank you!
 ## License
