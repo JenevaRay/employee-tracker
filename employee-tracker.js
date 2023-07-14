@@ -41,7 +41,7 @@ async function banner() {
 
 async function showTable(obj) {
     if (obj.length == 0) {
-        console.log(`No entries to show.`)
+        console.log(`No entries to show for ${JSON.stringify(obj)}`)
     } else {
         printTable(obj)
     }
@@ -75,7 +75,7 @@ async function askTask() {
             FROM employee_db.department
             INNER JOIN employee_db.role ON employee_db.role.department_id = employee_db.department.id
             INNER JOIN employee_db.employee e ON e.role_id = employee_db.role.id
-            INNER JOIN employee_db.employee m ON e.manager_id = m.id;`
+            LEFT JOIN employee_db.employee m ON e.manager_id = m.id;`
         )
         showTable(employees[0])
         askTask()
@@ -92,7 +92,7 @@ async function askTask() {
             FROM employee_db.department
             INNER JOIN employee_db.role ON employee_db.role.department_id = employee_db.department.id
             INNER JOIN employee_db.employee e ON e.role_id = employee_db.role.id
-            INNER JOIN employee_db.employee m ON e.manager_id = m.id
+            LEFT JOIN employee_db.employee m ON e.manager_id = m.id
             ORDER BY manager;`
         )
         showTable(employees[0])
@@ -291,6 +291,45 @@ async function askTask() {
             updateEmployeeRoleQuery(obj.employee.split(":")[0], obj.role.split(":")[0])
         })
     }
+    async function updateEmployeeManager() {
+        let roles = await dbconn.query(
+            `SELECT title AS job_title, 
+            role.id AS role_id, 
+            name AS department, 
+            salary, 
+            CONCAT(role.id, ':⠀', title, '⠀in⠀', name, '⠀$', salary, '⠀per yr') AS name
+            FROM employee_db.department
+            INNER JOIN employee_db.role ON employee_db.role.department_id = employee_db.department.id
+            ORDER BY role_id;`
+        )
+        let employees = await dbconn.query(
+            `SELECT employee.id AS employee_id, title AS job_title, 
+            name as department, salary, 
+            CONCAT(employee.id, ':⠀', first_name, '⠀', last_name) AS name
+            FROM employee_db.department
+            INNER JOIN employee_db.role ON employee_db.role.department_id = employee_db.department.id
+            INNER JOIN employee_db.employee ON employee.role_id = employee_db.role.id;`
+        )
+        await inq.prompt([{name: "employee", message: "Select an employee to update roles with.", type: "list",
+            choices: employees[0]
+        }, {name: "role", message: "Select a new role to give to them.", type: "list", choices: roles[0]
+        }]).then((obj)=>{
+            let employee_id, role_id
+            for (let row in employees[0]) {
+                if (obj.employee == employees[0][row].name) {
+                    employee_id = employees[0][row].id
+                }
+            }
+            for (let row in roles[0]) {
+                if (obj.role == roles[0][row].name) {
+                    role_id = roles[0][row].id
+                }
+            }
+            // console.log(`Updating ${obj.employee}'s role to ${obj.role} with ${obj.employee.split(":")[0]} and ${obj.role.split(":")[0]}`)
+            updateEmployeeRoleQuery(obj.employee.split(":")[0], obj.role.split(":")[0])
+        })
+    }
+
     async function chooseDeleteDepartment() {
         let departments = await dbconn.query(
             `SELECT name,
@@ -416,6 +455,9 @@ async function askTask() {
                 break;
             case "Update Employee Role":
                 updateEmployeeRole()
+                break;
+            case "Update Employee Manager":
+                updateEmployeeManager()
                 break;
             case "Delete Department":
                 chooseDeleteDepartment()

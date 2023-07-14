@@ -18,7 +18,12 @@ This is an employee management system that allows for organizational structuring
 - [Tests](#tests)
 
 ## Installation
-- `git clone git@github.com:JenevaRay/employee-tracker.git`\n`cd employee-tracker`\n`npm install`\nedit `.env` to specify the MySQL server login info\n`node employee-tracker.js``
+- `git clone git@github.com:JenevaRay/employee-tracker.git`
+- `cd employee-tracker`
+- `npm install`
+- edit `.env` to specify the MySQL server login info
+- `cat db/schema.sql | mysql -u root -p`
+- `node employee-tracker.js`
 
 ## Usage
 - node employee-tracker.js
