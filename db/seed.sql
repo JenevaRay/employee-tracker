@@ -93,5 +93,5 @@ INSERT INTO employee_db.role (title, department_id, salary) VALUES
  ("Data Engineer", 14, 70000), 
  ("Data Visualization Spc", 14, 60000);
 
-INSERT INTO employee_db.employee (first_name, last_name, role_id, manager_id) VALUES ("Jeneva", "Ray", 1, 1);
-INSERT INTO employee_db.employee (first_name, last_name, role_id, manager_id) VALUES ("Wendi", "Lin", 12, 1);
+INSERT INTO employee_db.employee (first_name, last_name, role_id, manager_id) VALUES ("Aurora", "Borealis", 20, 1);
+INSERT INTO employee_db.employee (first_name, last_name, role_id, manager_id) VALUES ("Wally", "Smith", 12, 1);
