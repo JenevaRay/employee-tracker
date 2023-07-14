@@ -41,7 +41,7 @@ async function banner() {
 
 async function showTable(obj) {
     if (obj.length == 0) {
-        console.log(`No entries to show for ${JSON.stringify(obj)}`)
+        console.log(`No entries to show.`)
     } else {
         printTable(obj)
     }
@@ -155,12 +155,12 @@ async function askTask() {
         }
     }
     async function updateEmployeeRoleQuery(employee_id, role_id) {
-        console.log(employee_id)
-        console.log(role_id)
+        // console.log(employee_id)
+        // console.log(role_id)
         let result = await dbconn.query(
             `UPDATE employee_db.employee SET role_id = ? WHERE id = ?`, [role_id, employee_id]
         )
-        console.log(result[0])
+        // console.log(result[0])
         if (result[0].warningStatus) {
             throw result
         } else {
@@ -199,7 +199,7 @@ async function askTask() {
                 return Number.isInteger(salary) || 'Please enter a valid whole number'
             }},
             {name: "department", message: "What department does the role belong to?", type: 'list', choices: departments[0]}]).then((obj)=>{
-                console.log(obj.department)
+                // console.log(obj.department)
                 dbconn.query(
                     `SELECT id FROM employee_db.department WHERE name = ?`, obj.department
                 ).then(result=>{
@@ -239,7 +239,7 @@ async function askTask() {
                     manager_id = null
                 } else {
                     for (let row in managers) {
-                        console.log(managers)
+                        // console.log(managers)
                         if (obj.manager == managers[row].name) {
                             manager_id = managers[row].employee_id
                         }
@@ -370,7 +370,7 @@ async function askTask() {
             dbconn.query(
                 `SELECT id FROM employee_db.role WHERE title = ?`, obj.role
             ).then((result)=>{
-                console.log(result)
+                // console.log(result)
                 let role_id = result[0][0].id
                 dbconn.query(
                     `DELETE FROM employee_db.role WHERE id = ?`, role_id
@@ -398,7 +398,7 @@ async function askTask() {
             dbconn.query(
                 `SELECT id FROM employee_db.employee WHERE first_name = ? AND last_name = ?`, obj.employee.split("⠀")
             ).then((result)=>{
-                console.log(result)
+                // console.log(result)
                 let employee_id = result[0][0].id
                 dbconn.query(
                     `DELETE FROM employee_db.employee WHERE id = ?`, employee_id
