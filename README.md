@@ -1,6 +1,6 @@
 ![License: MIT](https://img.shields.io/badge/License:_mit-grey.svg?style=plastic&color=blue)
 
-# Employee-Manager
+# Employee-Tracker
 ## Description
 This is an employee management system that allows for organizational structuring and restructuring, promotions, firing, and more.
 - I wanted to learn how to utilize classic SQL better.
@@ -31,17 +31,16 @@ This is an employee management system that allows for organizational structuring
 [![Video of software in use.](./assets/screenshot.png)](https://drive.google.com/file/d/1OohS0wm8kf5TVPjggHdjLDdHru7kaDLu/view?usp=drive_link)
 ## Credits
 - I learned how to use MySQL queries and joins from the edX staff.  Thank you!
+
 ## License
 [MIT License *file*](LICENSE)
-
 https://opensource.org/licenses/mit
+
 ## Features
 Full create (INSERT), read (SELECT), UPDATE, and DELETE functionality.
+
 ## Contributing
 Email me at jenevaray@gmail.com with a Git push request.
-## Tests
-- `test` (which runs `npm run jestCoverage`), is for: Nothing.
-- `jestCoverage` (which runs `jest --coverage`), is for: 
 
 ## Questions
 My GitHub profile: https://github.com/JenevaRay
